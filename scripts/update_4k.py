@@ -1,5 +1,6 @@
 """Daily 4K maintenance: re-probe the known 4K URLs, and if one dies,
-try to replace it from fresh upstream lists. Keeps only 3840-wide streams.
+try to replace it from fresh upstream lists. Keeps only >=2560-wide streams
+(3840 true 4K, plus 1440p which the user approved 2026-11-14).
 Run from the repo root: python3 scripts/update_4k.py
 """
 import subprocess, re, json, os, sys
@@ -33,7 +34,7 @@ def main():
     for name, url in cur:
         w = ffprobe_width(url)
         print(name, w, url[:100], flush=True)
-        if w >= 3840:
+        if w >= 2560:
             kept.append((name, url))
     print(f"kept {len(kept)}/{len(cur)}")
     if len(kept) == len(cur):
@@ -48,7 +49,7 @@ def main():
             subprocess.run(["curl", "-L", "-s", "--max-time", "60", "-o", tmp, src])
             for n2, u2 in parse_m3u(tmp):
                 if n2 == name or (name in n2 and '4K' in n2):
-                    if ffprobe_width(u2) >= 3840:
+                    if ffprobe_width(u2) >= 2560:
                         kept.append((name, u2)); print(f"replaced {name} -> {u2[:100]}", flush=True); break
             else:
                 continue

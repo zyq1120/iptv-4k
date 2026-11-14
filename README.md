@@ -1,7 +1,8 @@
 # iptv-4k
 
-Verified true 4K (3840×2160) IPTV channels only. A channel is listed here only if
-ffprobe actually reads a 3840-wide video stream from it. Channels whose name
+Verified high-resolution IPTV channels only: 3840×2160 true 4K, plus 2560×1440
+(1440p, approved by the user 2026-11-14). A channel is listed here only if
+ffprobe actually reads a >=2560-wide video stream from it. Channels whose name
 says 4K but whose stream is 1080p/720p are NOT listed (e.g. the CCTV-4K official
 feed currently resolves to 1080p, and the CCTV-4K auth_key feeds expire).
 
@@ -19,12 +20,15 @@ Subscription URL (raw, always latest):
 https://raw.githubusercontent.com/zyq1120/iptv-4k/main/4k.m3u
 ```
 
-## Channels (verified 2026-10-31 with ffprobe, 3840×2160)
+## Channels
 
-- 湖南卫视 — mgtv signed URL (may expire; maintenance re-sources it from upstream lists)
-- 河北卫视 — hebtv live101 (unsigned http, most stable)
-- 苏州4K — tylive kan0512 (intermittent in earlier tests)
-- Eleven Sports 1 4K PL — Poland, sports
+- 湖南卫视 — 3840×2160, mgtv signed URL (may expire; maintenance re-sources it from upstream lists)
+- 河北卫视 — 3840×2160, hebtv live101 (unsigned http, most stable)
+- 苏州4K — 3840×2160, tylive kan0512 (intermittent in earlier tests)
+- Eurosport 4K Czechia — 2560×1440, verified 2026-11-14
+- Travelxp 4K Czechia — 2560×1440, verified 2026-11-14
+
+Removed: Eleven Sports 1 4K PL (source 404, no upstream replacement, 2026-11-02).
 
 ## Maintenance
 
